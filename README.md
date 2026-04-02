@@ -16,11 +16,13 @@ You can return the answer in any order.
 >Input: nums = [2,7,11,15], target = 9
 >Output: [0,1]
 >Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
->Example 2:
+
+**Example 2:**
 
 >Input: nums = [3,2,4], target = 6
 >Output: [1,2]
->Example 3:
+
+**Example 3:**
 
 >Input: nums = [3,3], target = 6
 >Output: [0,1]
@@ -35,4 +37,44 @@ class Solution:
             if desire in uni_numbers:      # если это число уже встречалось раньше
                 return [uni_numbers[desire], idx]       # возвращаем индексы: сохранённый и текущий
             uni_numbers[num] = idx          # иначе запоминаем текущее число и его индекс
+```
+
+217. Contains Duplicate
+-
+Given an integer array ```nums```, return ```true``` if any value appears at least twice in the array, and return ```false``` if every element is distinct.
+
+**Example 1:**
+
+>Input: nums = [1,2,3,1]
+>
+>Output: true
+>
+>Explanation:
+>
+>The element 1 occurs at the indices 0 and 3.
+
+**Example 2:**
+
+>Input: nums = [1,2,3,4]
+>
+>Output: false
+>
+>Explanation:
+>
+>All elements are distinct.
+
+**Example 3:**
+
+>Input: nums = [1,1,1,3,3,4,3,2,4,2]
+>
+>Output: true
+
+**Solution:**
+```
+class Solution:
+    def containsDuplicate(self, nums: list[int]) -> bool:
+        if len(nums) == len(set(nums)):     # условие уникальностт всех элементов
+            return False
+        else:
+            return True
 ```
