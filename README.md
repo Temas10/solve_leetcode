@@ -354,7 +354,7 @@ class MinStack:
 
     def getMin(self) -> int:
         return self.stack_min[-1]
-        
+       
 
 
 # Your MinStack object will be instantiated and called as such:
@@ -363,4 +363,57 @@ class MinStack:
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()
+```
+
+**1704. Determine if String Halves Are Alike
+--------------------------------------------
+
+You are given a string ```s``` of even length. Split this string into two halves of equal lengths, and let ```a``` be the first half and ```b``` be the second half.
+
+Two strings are alike if they have the same number of vowels (```'a'```, ```'e'```, ```'i'```, ```'o'```, ```'u'```, ```'A'```, ```'E'```, ```'I'```, ```'O'```, ```'U'```). Notice that ```s``` contains uppercase and lowercase letters.
+
+Return ```true``` if ```a``` and ```b``` are alike. Otherwise, return ```false```.
+
+**Example 1:**
+
+>Input: s = "book"
+>Output: true
+>Explanation: a = "bo" and b = "ok". a has 1 vowel and b >has 1 vowel. Therefore, they are alike.
+
+**Example 2:**
+
+>Input: s = "textbook"
+>Output: false
+>Explanation: a = "text" and b = "book". a has 1 vowel >whereas b has 2. Therefore, they are not alike.
+>Notice that the vowel o is counted twice.
+
+**Solution:**
+```
+# первое решение
+class Solution:
+    vowels = frozenset({'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'})
+    def halvesAreAlike(self, s: str) -> bool:
+        mid = len(s) // 2
+        count = sum(s[idx] in self.vowels for idx in range(mid))
+        count -= sum(s[idx] in self.vowels for idx in range(mid, len(s)))   
+        return not count
+    
+# второе решение
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        s = s.lower()
+        v='aeiou'
+        x = int(len(s)/2)
+        a = s[0:x]
+        b = s[x:]
+        aa, bb = 0,0
+        for i,j in zip(a,b):
+            if i in v:
+                aa += 1
+            if j in v:
+                bb += 1
+        if aa == bb:
+            return True
+        else:
+            return False 
 ```
