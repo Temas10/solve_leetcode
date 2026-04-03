@@ -1,7 +1,7 @@
 Решение задач с LeetCode
 =
 
-1. Two Sum
+**1. Two Sum**
 -----------
 Given an array of integers ```nums``` and an integer ```target```, return indices of the two numbers such that they add up to ```target```.
 
@@ -37,7 +37,7 @@ class Solution:
             uni_numbers[num] = idx          # иначе запоминаем текущее число и его индекс
 ```
 
-217. Contains Duplicate
+**217. Contains Duplicate**
 -----------------------
 Given an integer array ```nums```, return ```true``` if any value appears at least twice in the array, and return ```false``` if every element is distinct.
 
@@ -77,7 +77,7 @@ class Solution:
             return True
 ```
 
-242. Valid Anagram
+**242. Valid Anagram**
 ------------------
 
 Given two strings ```s``` and ```t```, return ```true``` if ```t``` is an anagram of ```s```, and ```false``` otherwise.
@@ -93,6 +93,52 @@ Given two strings ```s``` and ```t```, return ```true``` if ```t``` is an anagra
 >Input: s = "rat", t = "car"
 >
 >Output: false
+
+**Solution:**
+```
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):       # Если строки разной длины, они заведомо не могут быть анаграммами
+            return False
+        
+        count_s = {}
+        count_t = {}
+
+        for char_s, char_t in zip(s,t):
+            count_s[char_s] = count_s.get(char_s, 0) + 1  # считаем количество уникальных букв 
+            count_t[char_t] = count_t.get(char_t, 0) + 1  # для каждого слова
+
+        return count_s == count_t
+```
+
+**49. Group Anagrams**
+------------------
+
+Given an array of strings ```strs```, group the anagrams together. You can return the answer in any order.
+
+**Example 1:**
+
+>Input: strs = ["eat","tea","tan","ate","nat","bat"]
+>
+>Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+>
+>Explanation:
+>
+>There is no string in strs that can be rearranged to >form "bat".
+>The strings "nat" and "tan" are anagrams as they can be >rearranged to form each other.
+>The strings "ate", "eat", and "tea" are anagrams as >they can be rearranged to form each other.
+
+**Example 2:**
+
+>Input: strs = [""]
+>
+>Output: [[""]]
+
+**Example 3:**
+
+>Input: strs = ["a"]
+>
+>Output: [["a"]]
 
 **Solution:**
 ```
