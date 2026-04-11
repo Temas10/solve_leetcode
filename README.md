@@ -205,7 +205,7 @@ class Solution:
 ```
 
 **121. Best Time to Buy and Sell Stock**
-------------------------------------
+---------------------------------------
 
 You are given an array ```prices``` where ```prices[i]``` is the price of a given stock on the ``i^th`` day.
 
@@ -243,7 +243,7 @@ class Solution:
 ```
 
  **374. Guess Number Higher or Lower**
- ----------------------------------
+-----------------------------------------
 
 We are playing the Guess Game. The game is as follows:
 
@@ -298,7 +298,7 @@ class Solution:
 ```
 
 **155. Min Stack**
---------------
+-------------------
 Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 
 Implement the ```MinStack``` class:
@@ -365,7 +365,7 @@ class MinStack:
 # param_4 = obj.getMin()
 ```
 
-**1704. Determine if String Halves Are Alike
+**1704. Determine if String Halves Are Alike**
 --------------------------------------------
 
 You are given a string ```s``` of even length. Split this string into two halves of equal lengths, and let ```a``` be the first half and ```b``` be the second half.
@@ -416,4 +416,51 @@ class Solution:
             return True
         else:
             return False 
+```
+
+**11. Container With Most Water**
+----------------------------------
+
+You are given an integer array ```height``` of length ```n```. There are ```n``` vertical lines drawn such that the two endpoints of the ```i^th``` line are ```(i, 0)``` and ```(i, height[i])```.
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+
+ 
+
+**Example 1:**
+
+>Input: height = [1,8,6,2,5,4,8,3,7]
+>Output: 49
+>Explanation: The above vertical lines are represented by >array [1,8,6,2,5,4,8,3,7]. In this case, the max area of >water (blue section) the container can contain is 49.
+
+**Example 2:**
+
+>Input: height = [1,1]
+>Output: 1
+
+**Solution:**
+```
+class Solution:
+    def maxArea(self, nums: List[int]) -> int:
+        
+
+        left = 0
+        right = len(nums) - 1
+
+        summ = 0
+
+        while left <= right:
+            s = abs(right - left) * min(nums[left], nums[right])
+            summ = max(summ, s)
+
+            if nums[left] > nums[right]:
+                right -= 1
+            else:
+                left += 1
+
+        return(summ)
 ```
